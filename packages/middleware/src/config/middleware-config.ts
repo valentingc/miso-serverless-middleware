@@ -98,7 +98,7 @@ export const getConfig: () => Promise<MiddlewareConfig> = async () => {
   // }
 
   const replicationDelayMs =
-    process.env.MISO_MIDDLEWARE_REPLICATION_DELAY_MS || '1000';
+    process.env.MISO_MIDDLEWARE_REPLICATION_DELAY_MS || '200';
   const thisNodeName = process.env.MISO_NODE_NAME;
   if (thisNodeName === undefined) {
     throw new Error('Env variable MISO_NODE_NAME is not set');
