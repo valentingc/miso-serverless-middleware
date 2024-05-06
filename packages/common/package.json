@@ -1,0 +1,34 @@
+{
+  "name": "@miso/common",
+  "version": "0.9.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "clean": "rimraf ./dist/ ./src/grpc/client/* ./src/grpc/server/* tsconfig.tsbuildinfo",
+    "copy-proto-files": "copyfiles -f ./src/grpc/*.proto dist/grpc",
+    "prebuild": "npm run clean",
+    "build": " npm run build:proto; npm run build:fix-google-exports; npm run build:ts; npm run copy-proto-files",
+    "build:ts": "tsc --build",
+    "build:fix-google-exports": "echo 'fix-google-exports' && grep -qxF \"export { GOOGLE_PROTOBUF_PACKAGE_NAME } from './google/protobuf/struct';\" src/grpc/server/index.google.protobuf.ts || echo \"export { GOOGLE_PROTOBUF_PACKAGE_NAME } from './google/protobuf/struct';\" >> src/grpc/server/index.google.protobuf.ts",
+    "build:proto-client-loader": "proto-loader-gen-types --longs=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=src/grpc/client/ src/grpc/*.proto",
+    "build:proto-server-tsproto-windows": "protoc --plugin=protoc-gen-ts_proto=%CD%\\..\\..\\node_modules\\.bin\\protoc-gen-ts_proto.cmd  --ts_proto_out=./src/grpc/server -I ./src/grpc ./src/grpc/*.proto --ts_proto_opt=nestJs=true --ts_proto_opt=outputIndex=true --ts_proto_opt=outputEncodeMethods=true --ts_proto_opt=outputJsonMethods=true --ts_proto_opt=esModuleInterop=true --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=addNestjsRestParameter=true",
+    "build:proto-server-tsproto": "protoc --plugin=../../node_modules/.bin/protoc-gen-ts_proto  --ts_proto_out=./src/grpc/server -I ./src/grpc ./src/grpc/*.proto --ts_proto_opt=nestJs=true --ts_proto_opt=outputIndex=true --ts_proto_opt=outputEncodeMethods=true --ts_proto_opt=outputJsonMethods=true --ts_proto_opt=esModuleInterop=true --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=addNestjsRestParameter=true",
+    "build:proto": "echo 'Building proto files only works in a linux shell!' && npm run build:proto-client-loader && npm run build:proto-server-tsproto",
+    "release": "npm version patch && npm publish"
+  },
+  "author": "",
+  "license": "",
+  "publishConfig": {
+    "registry": "https://verdaccio.valentingc.dev"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.3",
+    "@grpc/proto-loader": "^0.7.8",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.1"
+  },
+  "devDependencies": {
+    "ts-proto": "^1.156.7"
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "redis": {
+    "2023-12-13T14:51:46.674Z": [
+      {
+        "testRun": 1,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11322471119069,
+        "timeWrite": 159.134909,
+        "timeRead": 6.289066,
+        "timeTotal": 165.423975,
+        "isCorrect": false
+      },
+      {
+        "testRun": 2,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11322637298149,
+        "timeWrite": 139.609184,
+        "timeRead": 6.661048,
+        "timeTotal": 146.270232,
+        "isCorrect": false
+      },
+      {
+        "testRun": 3,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11322783959368,
+        "timeWrite": 131.785842,
+        "timeRead": 5.706745,
+        "timeTotal": 137.492587,
+        "isCorrect": false
+      },
+      {
+        "testRun": 4,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11322921778670,
+        "timeWrite": 120.306994,
+        "timeRead": 5.843601,
+        "timeTotal": 126.150595,
+        "isCorrect": false
+      },
+      {
+        "testRun": 5,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11323048478391,
+        "timeWrite": 120.075143,
+        "timeRead": 5.457421,
+        "timeTotal": 125.532564,
+        "isCorrect": false
+      }
+    ],
+    "2023-12-13T14:54:13.850Z": [
+      {
+        "testRun": 1,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11469647208895,
+        "timeWrite": 203.193728,
+        "timeRead": 6.59512,
+        "timeTotal": 209.788848,
+        "isCorrect": false
+      },
+      {
+        "testRun": 2,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11469857875677,
+        "timeWrite": 188.992058,
+        "timeRead": 7.797533,
+        "timeTotal": 196.789591,
+        "isCorrect": false
+      },
+      {
+        "testRun": 3,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11470055100932,
+        "timeWrite": 151.975117,
+        "timeRead": 5.908968,
+        "timeTotal": 157.884085,
+        "isCorrect": false
+      },
+      {
+        "testRun": 4,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11470213423449,
+        "timeWrite": 165.626359,
+        "timeRead": 6.388307,
+        "timeTotal": 172.014666,
+        "isCorrect": false
+      },
+      {
+        "testRun": 5,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11470386048451,
+        "timeWrite": 156.067859,
+        "timeRead": 6.63084,
+        "timeTotal": 162.698699,
+        "isCorrect": false
+      }
+    ],
+    "2023-12-13T14:55:28.834Z": [
+      {
+        "testRun": 1,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11544631204895,
+        "timeWrite": 174.525632,
+        "timeRead": 8.402399,
+        "timeTotal": 182.928031,
+        "isCorrect": false
+      },
+      {
+        "testRun": 2,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11544814997824,
+        "timeWrite": 170.898093,
+        "timeRead": 6.429759,
+        "timeTotal": 177.327852,
+        "isCorrect": false
+      },
+      {
+        "testRun": 3,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11544992784866,
+        "timeWrite": 152.400864,
+        "timeRead": 7.751174,
+        "timeTotal": 160.152038,
+        "isCorrect": false
+      },
+      {
+        "testRun": 4,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11545153361849,
+        "timeWrite": 134.932952,
+        "timeRead": 6.131239,
+        "timeTotal": 141.064191,
+        "isCorrect": false
+      },
+      {
+        "testRun": 5,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11545295011325,
+        "timeWrite": 130.584444,
+        "timeRead": 6.083687,
+        "timeTotal": 136.668131,
+        "isCorrect": false
+      }
+    ],
+    "2023-12-13T14:55:32.587Z": [
+      {
+        "testRun": 1,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11548383811063,
+        "timeWrite": 186.387324,
+        "timeRead": 5.906462,
+        "timeTotal": 192.293786,
+        "isCorrect": false
+      },
+      {
+        "testRun": 2,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11548576994266,
+        "timeWrite": 143.542491,
+        "timeRead": 5.898218,
+        "timeTotal": 149.440709,
+        "isCorrect": false
+      },
+      {
+        "testRun": 3,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11548726879818,
+        "timeWrite": 152.984106,
+        "timeRead": 42.811897,
+        "timeTotal": 195.796003,
+        "isCorrect": false
+      },
+      {
+        "testRun": 4,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11548923120154,
+        "timeWrite": 152.932796,
+        "timeRead": 7.473725,
+        "timeTotal": 160.406521,
+        "isCorrect": false
+      },
+      {
+        "testRun": 5,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 11549084123453,
+        "timeWrite": 142.238532,
+        "timeRead": 6.119306,
+        "timeTotal": 148.357838,
+        "isCorrect": false
+      }
+    ]
+  }
+}

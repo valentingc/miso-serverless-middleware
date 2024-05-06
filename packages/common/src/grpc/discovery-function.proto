@@ -1,0 +1,70 @@
+syntax = "proto3";
+package miso.overlay.discovery.function;
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+service OverlayFunctionDiscoveryService {
+  rpc registerServerlessFunction (ServerlessFunctionRegisterRequest) returns (ServerlessFunctionRegisterResponse) {}
+  rpc unregisterServerlessFunction (ServerlessFunctionUnregisterRequest) returns (ServerlessFunctionRegisterResponse) {}
+  rpc exchangeMiddlewareServerlessFunctionPodInfo (ServerlessFunctionPodInfoRequest) returns (Void) {}
+  rpc getFunctionInstanceMap (Void) returns (ServerlessFunctionFunctionInstanceMapResponse) {}
+}
+
+message ServerlessFunctionFunctionInstanceMapResponse {
+  map<string, ServerlessFunctionFunctionInstanceMapResponeItem> items = 1;
+}
+
+message ServerlessFunctionFunctionInstanceMapResponeItem {
+  repeated ServerlessFunctionInstance items = 1;
+}
+
+message ServerlessFunctionInstance {
+  string podName = 1;
+  string nodeName = 2;
+  string nodeIp = 3;
+  google.protobuf.Timestamp registeredAtTimestamp = 4;
+  google.protobuf.Timestamp lastHeartbeatTimestamp = 5;
+}
+
+message Void {}
+
+message ServerlessFunctionUnregisterRequest {
+  miso.common.ServerlessFunctionBaseInformation functionBase = 1;
+  string podName = 2;
+}
+
+message ServerlessFunctionRegisterRequest {
+  miso.common.ServerlessFunctionBaseInformation functionBase = 1;
+  string podName = 2;
+  string nodeName = 3;
+  string nodeIp = 4;
+}
+
+message ServerlessFunctionRegisterResponse {
+  bool acknowledged = 1;
+}
+
+message ServerlessFunctionPodInfoMapValueItem {
+  string podName = 1;
+  string nodeName = 3;
+  string nodeIp = 4;
+}
+
+message ServerlessFunctionPodInfoMapValue {
+  repeated ServerlessFunctionPodInfoMapValueItem items = 1;
+}
+
+message ServerlessFunctionPodInfoRequest {
+  // k: serverless function name
+  map<string, ServerlessFunctionPodInfoMapValue> serverlessFunctionPods = 1;
+  string srcMiddlewarePodName = 2;
+  string srcMiddlewareNodeName = 3;
+  string srcMiddlewareNodeIp = 4;
+  ServerlessFunctionPodInfoRequestType requestType = 5;
+  bool firstInstanceofFunction = 6;
+}
+
+enum ServerlessFunctionPodInfoRequestType {
+  ADDED = 0;
+  REMOVED = 1;
+}

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "module": "CommonJS"
+  },
+  "include": ["./evaluation/throughput.ts", "evaluation/server.js"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

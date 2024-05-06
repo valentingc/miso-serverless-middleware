@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/crdt" },
+    { "path": "packages/middleware" },
+    { "path": "packages/common" }
+  ]
+}

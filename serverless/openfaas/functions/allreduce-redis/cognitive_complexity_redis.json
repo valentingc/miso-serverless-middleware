@@ -1,0 +1,39 @@
+{
+  "minimumExample_redis.ts": {
+      "inner": [{
+          "column": 18,
+          "line": 6,
+          "inner": [{
+              "column": 29,
+              "line": 16,
+              "score": 0,
+              "name": ""
+          }],
+          "score": 2,
+          "name": ""
+      }, {
+          "column": 1,
+          "line": 32,
+          "inner": [{
+              "column": 34,
+              "line": 33,
+              "score": 0,
+              "name": ""
+          }],
+          "score": 0,
+          "name": "performAllReduceRedis"
+      }, {
+          "column": 1,
+          "line": 41,
+          "inner": [{
+              "column": 32,
+              "line": 47,
+              "score": 0,
+              "name": ""
+          }],
+          "score": 0,
+          "name": "getResultRedis"
+      }],
+      "score": 2
+  }
+}

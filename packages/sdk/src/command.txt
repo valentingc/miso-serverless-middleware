@@ -1,0 +1,4 @@
+protoc --plugin=protoc-gen-ts_proto=".\\node_modules\\.bin\\protoc-gen-ts_proto.cmd" --ts_proto_out=./packages/sdk/src/grpc/ ./packages/middleware/src/grpc/middleware.proto  --ts_proto_opt=outputServices=grpc-js
+
+# deprecated
+.\node_modules\.bin\proto-loader-gen-types.cmd --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=./packages/sdK/src/grpc ./packages/middleware/src/grpc/middleware.proto

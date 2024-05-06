@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "references": [{ "path": "../crdt" }],
+  "include": ["src/**/*", "test/**/*"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "incremental": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "target": "ES2020",
+    "esModuleInterop": true
+  }
+}

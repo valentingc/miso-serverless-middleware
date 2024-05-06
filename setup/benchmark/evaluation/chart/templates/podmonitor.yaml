@@ -1,0 +1,24 @@
+{{- $namespace := default .Release.Namespace .Values.podMonitor.misoNamespace }}
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    prometheus: "true"
+  name: {{ .Values.podMonitor.name }}
+spec:
+  namespaceSelector:
+    matchNames:
+      - {{ $namespace | quote }}
+  podMetricsEndpoints:
+    # - path: {{ .Values.podMonitor.path }}
+    #   port: {{ .Values.podMonitor.targetPort | quote}}
+    - honorLabels: true
+      interval: {{ .Values.podMonitor.interval }}
+      path: {{ .Values.podMonitor.path }}
+      # targetPort: {{ .Values.podMonitor.targetPort | quote}}
+      port: metrics
+      scheme: http
+  selector:
+    matchLabels:
+      {{- toYaml .Values.podMonitor.selector | nindent 8 }}

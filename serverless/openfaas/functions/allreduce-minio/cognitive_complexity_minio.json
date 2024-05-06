@@ -1,0 +1,127 @@
+{
+  "minimumExample_minio.ts": {
+      "inner": [{
+          "column": 18,
+          "line": 5,
+          "score": 2,
+          "name": ""
+      }, {
+          "column": 1,
+          "line": 32,
+          "score": 1,
+          "name": "makeBucket"
+      }, {
+          "column": 1,
+          "line": 38,
+          "inner": [{
+              "column": 22,
+              "line": 42,
+              "inner": [{
+                  "column": 23,
+                  "line": 47,
+                  "score": 0,
+                  "name": ""
+              }, {
+                  "column": 22,
+                  "line": 50,
+                  "score": 0,
+                  "name": ""
+              }],
+              "score": 0,
+              "name": ""
+          }],
+          "score": 0,
+          "name": "getResultMinioAllObjects"
+      }, {
+          "column": 1,
+          "line": 55,
+          "inner": [{
+              "column": 5,
+              "line": 58,
+              "score": 0,
+              "name": ""
+          }, {
+              "column": 59,
+              "line": 60,
+              "inner": [{
+                  "column": 24,
+                  "line": 61,
+                  "inner": [{
+                      "column": 53,
+                      "line": 62,
+                      "inner": [{
+                          "column": 27,
+                          "line": 67,
+                          "score": 0,
+                          "name": ""
+                      }, {
+                          "column": 26,
+                          "line": 70,
+                          "score": 0,
+                          "name": ""
+                      }],
+                      "score": 3,
+                      "name": ""
+                  }],
+                  "score": 3,
+                  "name": ""
+              }],
+              "score": 3,
+              "name": "getObject"
+          }, {
+              "column": 22,
+              "line": 76,
+              "inner": [{
+                  "column": 35,
+                  "line": 77,
+                  "score": 0,
+                  "name": ""
+              }, {
+                  "column": 7,
+                  "line": 78,
+                  "inner": [{
+                      "column": 38,
+                      "line": 79,
+                      "score": 0,
+                      "name": ""
+                  }],
+                  "score": 0,
+                  "name": ""
+              }],
+              "score": 0,
+              "name": ""
+          }],
+          "score": 3,
+          "name": "getResultMinio"
+      }, {
+          "column": 1,
+          "line": 87,
+          "inner": [{
+              "column": 22,
+              "line": 93,
+              "inner": [{
+                  "column": 59,
+                  "line": 94,
+                  "score": 2,
+                  "name": ""
+              }],
+              "score": 2,
+              "name": ""
+          }],
+          "score": 2,
+          "name": "putObject"
+      }, {
+          "column": 1,
+          "line": 102,
+          "inner": [{
+              "column": 34,
+              "line": 103,
+              "score": 0,
+              "name": ""
+          }],
+          "score": 0,
+          "name": "performAllReduceMinio"
+      }],
+      "score": 8
+  }
+}

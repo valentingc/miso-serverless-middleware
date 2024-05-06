@@ -1,0 +1,117 @@
+{{- if .Values.miso.enabled }}
+{{- $functionNamespace := default .Release.Namespace .Values.functionNamespace }}
+{{- $middlewareNamespace := .Release.Namespace }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .Values.miso.name }}
+  namespace: {{ $middlewareNamespace | quote}}
+  labels:
+    k8s-app: {{ .Values.miso.name }}
+spec:
+  selector:
+    matchLabels:
+      name: {{ .Values.miso.name }}
+  template:
+    metadata:
+      labels:
+        name: {{ .Values.miso.name }}
+        k8s-app: {{ .Values.miso.name }}
+        uniqueId: {{ randAlphaNum 5 | quote }} # this ensures the new image is pulled for :latest every time we run helm upgrade
+    spec:
+      hostNetwork: true
+      #serviceAccountName: {{ .Release.Name }}-{{ .Values.miso.name }}
+      tolerations:
+      # # these tolerations are to have the daemonset runnable on control plane nodes
+      # # remove them if your control plane nodes should not run pods
+      # - key: node-role.kubernetes.io/control-plane
+      #   operator: Exists
+      #   effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: {{ .Values.miso.name }}
+        image: localhost:4000/{{ .Values.miso.name }}
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 4
+            memory: 2Gi
+          requests:
+            cpu: 0.5
+            memory: 0.5Gi
+        stdin: true 
+        tty: true
+        env:
+          - name: MISO_MIDDLEWARE_REPLICATION_DELAY_MS
+            value: {{ .Values.miso.replicationDelay | quote }}
+          # - name: GRPC_TRACE
+          #   value: 'all'
+          # - name: GRPC_VERBOSITY
+          #   value: 'DEBUG'  
+          - name: NODE_ENV
+            value: {{ .Values.miso.env }}
+          - name: MISO_SERVERLESS_PLATFORM
+            value: OPENFAAS
+          - name: MISO_OVERLAY_DISCOVERY_NODE_K8S_NAMESPACE
+            value: {{ $middlewareNamespace | quote }}
+          - name: MISO_OVERLAY_DISCOVERY_FUNCTION_K8S_NAMESPACE
+            value: {{ $functionNamespace | quote }}
+          - name: MISO_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: MISO_NODE_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
+        ports:
+          - containerPort: {{ .Values.miso.middleware.port }}
+            hostPort: 5001
+            protocol: TCP
+          - containerPort: {{ .Values.miso.middleware.portMetrics }}
+            hostPort: 3001
+            protocol: TCP
+            name: metrics
+      terminationGracePeriodSeconds: 1
+      # - name: {{ .Values.miso.name }}-sidecar-libp2p
+      #   image: localhost:4000/{{ .Values.miso.name }}-sidecar-libp2p
+      #   imagePullPolicy: Always
+      #   stdin: true 
+      #   tty: true
+      #   env:
+      #     - name: MISO_NODE_NAME
+      #       valueFrom:
+      #         fieldRef:
+      #           fieldPath: spec.nodeName
+      #   ports:
+      #     - containerPort: 3000
+      #       hostPort: 3000
+      #       protocol: TCP
+      #   # resources:
+      #   #   limits:
+      #   #     memory: 200Mi
+      #   #   requests:
+      #   #     cpu: 100m
+      #   #     memory: 200Mi
+      # terminationGracePeriodSeconds: 30
+{{- end }}
+---
+{{- $namespace := default .Release.Namespace .Values.functionNamespace }}
+{{- if .Values.miso.enabled }}
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.miso.name }}
+  namespace: {{.Release.Namespace | quote}}
+spec:
+  selector:
+    name: {{ .Values.miso.name }}
+  type: NodePort
+  ports:
+  - port: 5001
+    targetPort: 5001
+    nodePort: 30001
+#  clusterIP: None
+{{- end }}

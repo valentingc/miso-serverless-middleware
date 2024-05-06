@@ -1,0 +1,15 @@
+syntax = "proto3";
+package miso.overlay.discovery.node;
+import "common.proto";
+
+service OverlayNodeDiscoveryService {
+  rpc heartbeat (OverlayNodeDiscoveryHeartbeatRequest) returns (OverlayNodeDiscoveryHeartbeatResponse) {}
+  rpc init (OverlayNodeDiscoveryHeartbeatRequest) returns (miso.common.Void) {}
+}
+
+message OverlayNodeDiscoveryHeartbeatRequest {
+  string srcNodeName = 1;
+}
+message OverlayNodeDiscoveryHeartbeatResponse {
+  bool acknowledged = 1;
+}

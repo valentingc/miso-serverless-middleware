@@ -1,0 +1,89 @@
+syntax = "proto3";
+package miso.common;
+import "google/protobuf/struct.proto";
+
+
+message ReplicaVersion {
+  string replicaId = 1;
+  uint64 version = 2;
+}
+message CausalCrdtVectorClock {
+  map<string, uint64> srcVectorClock = 1;
+}
+
+message StatefulObjectBaseInformation {
+  string statefulObjectId = 1;
+  string crdtName = 2;
+}
+
+message ServerlessFunctionBaseInformation {
+  string serverlessFunctionName = 1;
+}
+
+enum SetGenericType {
+  STRING = 0;
+  NUMBER = 1;
+  OBJECT = 2;
+}
+
+enum CRDTSetType {
+  MVREGISTER = 0;
+  ORSET = 1;
+  GSET = 2;
+  GCOUNTER = 3;
+  PNCOUNTER = 4;
+  EWFLAG = 5;
+  ORMAP = 6;
+}
+
+message CounterResponse {
+  StatefulObjectBaseInformation statefulObjectBase = 1;
+  sint64 value = 2;
+}
+
+message SetOrRegisterValueResponseStringValues {
+  repeated string values = 1;
+}
+message SetOrRegisterValueResponseNumberValues {
+  repeated double values = 1;
+}
+message SetOrRegisterValueResponseObjectValues {
+  repeated google.protobuf.Struct values = 1;
+}
+
+message SetOrRegisterValueResponse {
+  StatefulObjectBaseInformation statefulObjectBase = 1;
+  SetGenericType type = 5;
+  oneof val  {
+    SetOrRegisterValueResponseStringValues valuesString = 2;
+    SetOrRegisterValueResponseNumberValues valuesNumber = 3;
+    SetOrRegisterValueResponseObjectValues valuesObject = 4;
+  }
+}
+
+message FlagSetValueReponse {
+  StatefulObjectBaseInformation statefulObjectBase = 1;
+  bool value = 2;
+}
+
+message CounterInitRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 2;
+}
+
+message SetInitRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 2;
+  SetGenericType setGenerictype = 3;
+  CRDTSetType crdtSetType = 4;
+}
+
+message BoolResponse {
+  bool response = 1;
+}
+
+message AckResponse {
+  bool acknowledged = 1;
+}
+
+message Void {}

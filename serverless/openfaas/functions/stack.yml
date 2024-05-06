@@ -1,0 +1,148 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  # eval-1-set:
+  #   lang: node18
+  #   handler: ./eval-1
+  #   image: localhost:4000/eval-1-set
+  #   environment:
+  #     NODE_ENV: production
+  #   labels:
+  #     com.openfaas.scale.min: 1
+  #     com.openfaas.scale.max: 1
+  #     com.openfaas.scale.factor: 100
+  # ormap-miso:
+  #   lang: node18-miso
+  #   handler: ./ormap-miso
+  #   image: localhost:4000/allreduce-miso
+  #   environment:
+  #     NODE_ENV: development
+  #     MAX_JSON_SIZE: '100mb'
+  #     write_timeout: 5m2s
+  #     read_timeout: 5m2s
+  #     exec_timeout: 5m
+  #   labels:
+  #     com.openfaas.scale.min: 5
+  #     com.openfaas.scale.max: 5
+  #     com.openfaas.scale.factor: 100
+      # GRPC_TRACE: 'all'
+      # GRPC_VERBOSITY: 'DEBUG'
+  allreduce-minio:
+    lang: node18
+    handler: ./allreduce-minio
+    image: localhost:4000/allreduce-minio
+    environment:
+      NODE_ENV: production
+      MAX_JSON_SIZE: '100mb'
+      write_timeout: 5m2s
+      read_timeout: 5m2s
+      exec_timeout: 5m
+      # GRPC_TRACE: 'all'
+      # GRPC_VERBOSITY: 'DEBUG'
+    labels:
+      com.openfaas.scale.min: 5
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 100
+  allreduce-redis:
+    lang: node18
+    handler: ./allreduce-redis
+    image: localhost:4000/allreduce-redis
+    environment:
+      NODE_ENV: production
+      MAX_JSON_SIZE: '100mb'
+      write_timeout: 5m2s
+      read_timeout: 5m2s
+      exec_timeout: 5m
+      # GRPC_TRACE: 'all'
+      # GRPC_VERBOSITY: 'DEBUG'
+    labels:
+      com.openfaas.scale.min: 5
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 100
+  allreduce-miso:
+    lang: node18-miso
+    handler: ./allreduce-miso
+    image: localhost:4000/allreduce-miso
+    environment:
+      NODE_ENV: production
+      MAX_JSON_SIZE: '100mb'
+      write_timeout: 5m2s
+      read_timeout: 5m2s
+      exec_timeout: 5m
+      # GRPC_TRACE: 'all'
+      # GRPC_VERBOSITY: 'DEBUG'
+    labels:
+      com.openfaas.scale.min: 5
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 100
+  allreduce-miso-1n:
+    lang: node18-miso
+    handler: ./allreduce-miso
+    image: localhost:4000/allreduce-miso
+    environment:
+      NODE_ENV: production
+      MAX_JSON_SIZE: '100mb'
+      write_timeout: 5m2s
+      read_timeout: 5m2s
+      exec_timeout: 5m
+      # GRPC_TRACE: 'all'
+      # GRPC_VERBOSITY: 'DEBUG'
+    labels:
+      com.openfaas.scale.min: 5
+      com.openfaas.scale.max: 5
+      com.openfaas.scale.factor: 100
+    constraints:
+      - "kubernetes.io/hostname=k8s-master-thesis-worker"
+  # set:
+  #   lang: node18
+  #   handler: ./set
+  #   image: localhost:4000/set
+  #   environment:
+  #     NODE_ENV: production
+  #   labels:
+  #     com.openfaas.scale.min: 1
+  #     com.openfaas.scale.max: 1
+  #     com.openfaas.scale.factor: 100
+  # register:
+  #   lang: node18
+  #   handler: ./register
+  #   image: localhost:4000/register
+  #   environment:
+  #     NODE_ENV: production
+  #     MAX_JSON_SIZE: '100mb'
+  #   labels:
+  #     com.openfaas.scale.min: 1
+  #     com.openfaas.scale.max: 2
+  #     com.openfaas.scale.factor: 100
+  # counter:
+  #   lang: node18
+  #   handler: ./counter
+  #   image: localhost:4000/counter
+  #   environment:
+  #     NODE_ENV: production
+  #   labels:
+  #     com.openfaas.scale.min: 3
+  #     com.openfaas.scale.max: 3
+  #     com.openfaas.scale.factor: 100
+  # demo:
+  #   lang: node18
+  #   handler: ./demo
+  #   image: localhost:4000/demo
+  #   environment:
+  #     NODE_ENV: production
+  #   labels:
+  #     com.openfaas.scale.min: 1
+  #     com.openfaas.scale.max: 2
+  #     com.openfaas.scale.factor: 100
+  # minio:
+  #   lang: node18
+  #   handler: ./minio
+  #   image: localhost:4000/minio
+  #   labels:
+  #     com.openfaas.scale.min: 1
+  #     com.openfaas.scale.max: 
+  #     com.openfaas.scale.factor: 100
+
+

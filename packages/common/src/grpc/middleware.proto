@@ -1,0 +1,149 @@
+syntax = "proto3";
+package miso.middleware;
+import "common.proto";
+
+service GCounterService {
+  rpc Add(CounterAddOrSubtractValueRequest) returns (miso.common.CounterResponse) {}
+  rpc GetValue(CounterGetValueRequest) returns (miso.common.CounterResponse) {}
+  
+}
+
+service PNCounterService {
+  rpc Add(CounterAddOrSubtractValueRequest) returns (miso.common.CounterResponse) {}
+  rpc Subtract(CounterAddOrSubtractValueRequest) returns (miso.common.CounterResponse) {}
+  rpc GetValue(CounterGetValueRequest) returns (miso.common.CounterResponse) {}
+}
+
+service MVRegisterService {
+  rpc Assign(SetOrRegisterSetValueRequest) returns (miso.common.SetOrRegisterValueResponse) {}
+  rpc GetValue(SetOrRegisterGetValueRequest) returns (miso.common.SetOrRegisterValueResponse) {}
+}
+
+service SetService {
+  rpc Add(SetOrRegisterSetValueRequest) returns (miso.common.SetOrRegisterValueResponse) {}
+  rpc RemoveORSet(SetOrRegisterSetValueRequest) returns (miso.common.SetOrRegisterValueResponse) {}
+  rpc GetValue(SetOrRegisterGetValueRequest) returns (miso.common.SetOrRegisterValueResponse) {}
+}
+
+service ORMapService {
+  rpc Set(MapSetValueRequest) returns (MapValueResponse) {}
+  rpc Remove(MapDeleteValueRequest) returns (miso.common.AckResponse) {}
+  rpc Get(MapGetValueRequest) returns (MapValueResponse) {}
+  rpc Has(MapGetValueRequest) returns (miso.common.BoolResponse) {}
+  rpc Keys(MapGetKeysRequest) returns (MapGetKeysResponse) {}
+  rpc Clear(MapClearValueRequest) returns (miso.common.AckResponse) {}
+}
+
+service EWFlagService {
+  rpc Assign(FlagSetValueRequest) returns (miso.common.FlagSetValueReponse) {}
+  rpc GetValue(CounterGetValueRequest) returns (miso.common.FlagSetValueReponse) {}
+}
+
+service StatefulObjectService {
+  rpc Remove(DeleteCrdtRequest) returns (miso.common.BoolResponse) {}
+}
+
+message DeleteCrdtRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 2;
+}
+
+message FlagSetValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  bool value = 2;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 3;
+  string replicaId = 4;
+}
+
+message SetOrRegisterSetValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  string replicaId = 2;
+  string value = 3;
+  miso.common.SetGenericType setValueType = 4;
+  miso.common.CRDTSetType crdtType = 5;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 6;
+}
+
+message MapSetValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  string replicaId = 2;
+  oneof key  {
+    string keyString = 3;
+    double keyNumber = 4;
+  }
+  miso.common.CRDTSetType valueCrdtType = 5;
+  string valueCrdtName = 6;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 7;
+}
+
+
+message MapGetValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  oneof key  {
+    string keyString = 2;
+    double keyNumber = 3;
+  }
+  miso.common.CRDTSetType valueCrdtType = 4;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 5;
+}
+
+message MapGetKeysRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 2;
+  miso.common.SetGenericType keyType = 3;
+}
+
+message MapGetKeysResponse {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  oneof keys  {
+    miso.common.SetOrRegisterValueResponseStringValues keysString = 2;
+    miso.common.SetOrRegisterValueResponseNumberValues keysNumber = 3;
+    miso.common.SetOrRegisterValueResponseObjectValues keysObject = 4;
+  }
+}
+
+message MapValueResponse {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  oneof key  {
+    string keyString = 2;
+    double keyNumber = 3;
+  }
+  bool hasValue = 4;
+  optional string valueCrdtName = 5;
+  optional miso.common.CRDTSetType valueCrdtType = 6;
+}
+
+message MapDeleteValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  oneof key  {
+    string keyString = 2;
+    double keyNumber = 3;
+  }
+  miso.common.ServerlessFunctionBaseInformation functionBase = 4;
+}
+
+message MapClearValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 2;
+}
+
+message SetOrRegisterGetValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  string replicaId = 2;
+  miso.common.SetGenericType type = 3;
+  miso.common.CRDTSetType crdtType = 4;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 6;
+}
+
+message CounterAddOrSubtractValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  string replicaId = 2;
+  sint64 value = 3;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 4;
+}
+
+message CounterGetValueRequest {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 2;
+}
+

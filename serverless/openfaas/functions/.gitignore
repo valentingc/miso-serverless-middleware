@@ -1,0 +1,5 @@
+template/*/
+!template/node18
+!template/node18/**
+!template/node18-miso
+build/

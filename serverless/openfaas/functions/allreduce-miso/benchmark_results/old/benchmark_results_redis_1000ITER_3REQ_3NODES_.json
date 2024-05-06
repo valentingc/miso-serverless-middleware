@@ -1,0 +1,176 @@
+{
+  "redis": {
+    "2023-12-13T11:17:05.232Z": [
+      {
+        "testRun": 1,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3153463632893,
+        "timeWrite": 201.929493,
+        "timeRead": 6.975054,
+        "timeTotal": 208.904547,
+        "isCorrect": false
+      },
+      {
+        "testRun": 2,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3153673317556,
+        "timeWrite": 163.873428,
+        "timeRead": 8.502324,
+        "timeTotal": 172.375752,
+        "isCorrect": false
+      },
+      {
+        "testRun": 3,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3153846075425,
+        "timeWrite": 124.451707,
+        "timeRead": 5.509535,
+        "timeTotal": 129.961242,
+        "isCorrect": false
+      },
+      {
+        "testRun": 4,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3153976358108,
+        "timeWrite": 126.138734,
+        "timeRead": 5.649105,
+        "timeTotal": 131.787839,
+        "isCorrect": false
+      },
+      {
+        "testRun": 5,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3154108651973,
+        "timeWrite": 126.426409,
+        "timeRead": 5.277277,
+        "timeTotal": 131.703686,
+        "isCorrect": false
+      },
+      {
+        "testRun": 6,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3154240703229,
+        "timeWrite": 135.610698,
+        "timeRead": 6.404444,
+        "timeTotal": 142.015142,
+        "isCorrect": false
+      },
+      {
+        "testRun": 7,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3154383101310,
+        "timeWrite": 137.399209,
+        "timeRead": 6.378383,
+        "timeTotal": 143.777592,
+        "isCorrect": false
+      },
+      {
+        "testRun": 8,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3154527296027,
+        "timeWrite": 118.382328,
+        "timeRead": 5.97253,
+        "timeTotal": 124.354858,
+        "isCorrect": false
+      },
+      {
+        "testRun": 9,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3154652103509,
+        "timeWrite": 120.743688,
+        "timeRead": 5.294931,
+        "timeTotal": 126.038619,
+        "isCorrect": false
+      },
+      {
+        "testRun": 10,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3154778601875,
+        "timeWrite": 118.4238,
+        "timeRead": 5.139752,
+        "timeTotal": 123.563552,
+        "isCorrect": false
+      },
+      {
+        "testRun": 11,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3154902636857,
+        "timeWrite": 123.892755,
+        "timeRead": 4.953763,
+        "timeTotal": 128.846518,
+        "isCorrect": false
+      },
+      {
+        "testRun": 12,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3155031882736,
+        "timeWrite": 134.970602,
+        "timeRead": 5.737596,
+        "timeTotal": 140.708198,
+        "isCorrect": false
+      },
+      {
+        "testRun": 13,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3155173029580,
+        "timeWrite": 117.882905,
+        "timeRead": 4.887235,
+        "timeTotal": 122.77014,
+        "isCorrect": false
+      },
+      {
+        "testRun": 14,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3155296191796,
+        "timeWrite": 127.059899,
+        "timeRead": 5.089174,
+        "timeTotal": 132.149073,
+        "isCorrect": false
+      },
+      {
+        "testRun": 15,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3155428711486,
+        "timeWrite": 134.315354,
+        "timeRead": 5.393522,
+        "timeTotal": 139.708876,
+        "isCorrect": false
+      },
+      {
+        "testRun": 16,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3155568859490,
+        "timeWrite": 130.40706,
+        "timeRead": 7.354247,
+        "timeTotal": 137.761307,
+        "isCorrect": false
+      },
+      {
+        "testRun": 17,
+        "operation": "allreduce",
+        "type": "redis",
+        "timeStart": 3155707005209,
+        "timeWrite": 108.691781,
+        "timeRead": 4.676748,
+        "timeTotal": 113.368529,
+        "isCorrect": false
+      }
+    ]
+  }
+}

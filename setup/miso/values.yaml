@@ -1,0 +1,10 @@
+miso:
+  enabled: true
+  middleware:
+    port: 5001
+    portMetrics: 3001
+  name: miso-middleware
+  createServiceAccountTokenSecret: true
+  createServiceAccount: true
+  env: production
+  replicationDelay: 5

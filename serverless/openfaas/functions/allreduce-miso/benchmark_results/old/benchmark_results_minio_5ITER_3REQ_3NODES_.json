@@ -1,0 +1,118 @@
+{
+  "minio": {
+    "2023-12-13T14:55:11.074Z": [
+      {
+        "testRun": 1,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11526871053809,
+        "timeWrite": 199.41683,
+        "timeRead": 32.092204,
+        "timeTotal": 231.509034,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 2,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11527103308459,
+        "timeWrite": 155.631003,
+        "timeRead": 26.258061,
+        "timeTotal": 181.889064,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 3,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11527285560326,
+        "timeWrite": 139.455059,
+        "timeRead": 25.31927,
+        "timeTotal": 164.774329,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 4,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11527450630818,
+        "timeWrite": 121.765158,
+        "timeRead": 30.640356,
+        "timeTotal": 152.405514,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 5,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11527603587732,
+        "timeWrite": 129.090112,
+        "timeRead": 25.514368,
+        "timeTotal": 154.60448,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      }
+    ],
+    "2023-12-13T14:55:24.891Z": [
+      {
+        "testRun": 1,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11540688287270,
+        "timeWrite": 183.508096,
+        "timeRead": 24.635551,
+        "timeTotal": 208.143647,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 2,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11540897309492,
+        "timeWrite": 130.626154,
+        "timeRead": 23.851401,
+        "timeTotal": 154.477555,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 3,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11541052253372,
+        "timeWrite": 138.937685,
+        "timeRead": 24.574133,
+        "timeTotal": 163.511818,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 4,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11541216225764,
+        "timeWrite": 137.421993,
+        "timeRead": 21.236344,
+        "timeTotal": 158.658337,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      },
+      {
+        "testRun": 5,
+        "operation": "allreduce",
+        "type": "minio",
+        "timeStart": 11541375378161,
+        "timeWrite": 123.535622,
+        "timeRead": 23.031128,
+        "timeTotal": 146.56675,
+        "computedSum": 499999500000,
+        "isCorrect": true
+      }
+    ]
+  }
+}

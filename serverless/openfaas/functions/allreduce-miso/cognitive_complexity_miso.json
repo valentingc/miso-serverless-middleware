@@ -1,0 +1,27 @@
+{
+  "minimumExample_miso.ts": {
+      "inner": [{
+          "column": 18,
+          "line": 5,
+          "score": 2,
+          "name": ""
+      }, {
+          "column": 1,
+          "line": 27,
+          "score": 0,
+          "name": "getResult"
+      }, {
+          "column": 1,
+          "line": 34,
+          "inner": [{
+              "column": 34,
+              "line": 39,
+              "score": 0,
+              "name": ""
+          }],
+          "score": 0,
+          "name": "performAllReduceMiso"
+      }],
+      "score": 2
+  }
+}

@@ -1,0 +1,22 @@
+Nodes,TotalData
+5N,Time
+2024-02-26 16:10:55    0.154
+Name: 5N, dtype: float64
+10N,Time
+2024-02-28 13:10:00    1.22
+Name: 10N, dtype: float64
+20N,Time
+2024-02-28 11:41:55    7.7
+Name: 20N, dtype: float64
+30N,Time
+2024-02-27 20:56:30    33.9
+Name: 30N, dtype: float64
+40N,Time
+2024-02-27 19:50:00    587.0
+Name: 40N, dtype: float64
+50N,Time
+2024-02-27    2640.0
+Name: 50N, dtype: float64
+50N-200ms,Time
+2024-02-28 14:07:00    1.05
+Name: 50N-200ms, dtype: float64

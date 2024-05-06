@@ -1,0 +1,108 @@
+syntax = "proto3";
+package miso.replication;
+import "common.proto";
+import "google/protobuf/timestamp.proto";
+
+service ReplicationService {
+  rpc RetrieveGCounter(miso.common.CounterInitRequest) returns (RetrieveGCounterResponse) {}
+  rpc MergeGCounter(stream GCounterUpdate) returns (stream miso.common.CounterResponse) {}
+  rpc RetrievePNCounter(miso.common.CounterInitRequest) returns (RetrievePNCounterResponse) {}
+  rpc MergePNCounter(stream PNCounterUpdate) returns (stream miso.common.CounterResponse) {}
+  rpc RetrieveEWFlag(miso.common.CounterInitRequest) returns (RetrieveEWFlagResponse) {}
+  rpc MergeEWFlag(stream EWFlagUpdate) returns (stream miso.common.FlagSetValueReponse) {}
+  rpc RetrieveMVRegister(miso.common.SetInitRequest) returns (RetrieveMVRegisterResponse) {}
+  rpc MergeMVRegister(stream MVRegisterUpdate) returns (stream miso.common.SetOrRegisterValueResponse) {}
+  rpc RetrieveGSet(miso.common.SetInitRequest) returns (RetrieveGSetResponse) {}
+  rpc MergeGSet(stream MVRegisterUpdate) returns (stream miso.common.SetOrRegisterValueResponse) {}
+  rpc RetrieveORSet(miso.common.SetInitRequest) returns (RetrieveORSetResponse) {}
+  rpc MergeORSet(stream ORSetUpdate) returns (stream miso.common.SetOrRegisterValueResponse) {}
+}
+
+message GCounterUpdate {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  google.protobuf.Timestamp sentAtUtc = 2; 
+  map<string, uint64> srcMap = 3;
+  uint64 srcCurrentValue = 4;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 5;
+}
+
+message RetrieveGCounterResponse {
+  optional GCounterUpdate value = 1;
+  miso.common.BoolResponse hasValue = 2;
+}
+
+message PNCounterUpdate {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  google.protobuf.Timestamp sentAtUtc = 2; 
+  map<string, uint64> srcMapPositive = 3;
+  map<string, uint64> srcMapNegative = 4;
+  uint64 srcCurrentValue = 5;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 6;
+}
+
+message RetrievePNCounterResponse {
+  optional PNCounterUpdate value = 1;
+  miso.common.BoolResponse hasValue = 2;
+}
+
+message EWFlagUpdate {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  google.protobuf.Timestamp sentAtUtc = 2; 
+  bool srcCurrentValue = 3;
+  miso.common.CausalCrdtVectorClock vectorClock = 4;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 5;
+}
+
+message RetrieveEWFlagResponse {
+  optional EWFlagUpdate value = 1;
+  miso.common.BoolResponse hasValue = 2;
+}
+
+message MVRegisterUpdate {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  google.protobuf.Timestamp sentAtUtc = 2; 
+  bool srcCurrentValue = 3;
+  miso.common.CausalCrdtVectorClock vectorClock = 4;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 5;
+  miso.common.SetGenericType type = 6;
+  oneof val  {
+    miso.common.SetOrRegisterValueResponseStringValues valuesString = 7;
+    miso.common.SetOrRegisterValueResponseNumberValues valuesNumber = 8;
+    miso.common.SetOrRegisterValueResponseObjectValues valuesObject = 9;
+  }
+}
+
+message RetrieveORSetResponse {
+  optional ORSetUpdate value = 1;
+  miso.common.BoolResponse hasValue = 2;
+}
+
+message RetrieveGSetResponse {
+  optional MVRegisterUpdate value = 1;
+  miso.common.BoolResponse hasValue = 2;
+}
+message RetrieveMVRegisterResponse {
+  optional MVRegisterUpdate value = 1;
+  miso.common.BoolResponse hasValue = 2;
+}
+message ORSetUpdate {
+  miso.common.StatefulObjectBaseInformation statefulObjectBase = 1;
+  google.protobuf.Timestamp sentAtUtc = 2; 
+  bool srcCurrentValue = 3;
+  miso.common.CausalCrdtVectorClock vectorClock = 4;
+  miso.common.ServerlessFunctionBaseInformation functionBase = 5;
+  miso.common.SetGenericType type = 6;
+  map<string, miso.common.ReplicaVersion> elements = 7;
+}
+
+
+message ORMapUpdate {
+  ORSetUpdate keysOrSet = 1;
+  map<string, ORMapUpdateEntry> map = 2;
+}
+
+message ORMapUpdateEntry {
+  miso.common.SetGenericType keyType = 1;
+  miso.common.CRDTSetType valueCrdtType = 2;
+  string valueCrdtName = 3;
+}
