@@ -5,7 +5,18 @@ export interface ObjectWithId {
 }
 
 // https://arxiv.org/abs/1210.3368
-export class OptORSet<T> extends CausalCRDT implements Omit<Set<T>, 'add'> {
+export class OptORSet<T>
+  extends CausalCRDT
+  implements
+    Omit<
+      Set<T>,
+      | 'add'
+      | 'forEach'
+      | '[Symbol.iterator]'
+      | 'entries'
+      | typeof Symbol.iterator
+    >
+{
   private elements: Map<T, ReplicaVersion>;
 
   constructor(
@@ -28,29 +39,7 @@ export class OptORSet<T> extends CausalCRDT implements Omit<Set<T>, 'add'> {
   delete(value: T): boolean {
     return this.elements.delete(value);
   }
-  forEach(
-    callbackfn: (value: T, value2: T, set: Set<T>) => void,
-    thisArg?: any,
-  ): void {
-    for (const [key] of this.elements.entries()) {
-      callbackfn(key, key, thisArg);
-    }
-  }
 
-  [Symbol.iterator](): IterableIterator<T> {
-    const keys = this.elements.keys();
-    return {
-      [Symbol.iterator]: () => ({
-        next: () => {
-          const entry = keys.next();
-          if (entry.done) {
-            return { done: true, value: undefined as unknown as T };
-          }
-          return { done: false, value: entry.value };
-        },
-      }),
-    } as IterableIterator<T>;
-  }
   [Symbol.toStringTag] = 'OptORSet';
 
   keys(): IterableIterator<T> {
@@ -58,17 +47,6 @@ export class OptORSet<T> extends CausalCRDT implements Omit<Set<T>, 'add'> {
   }
   values(): IterableIterator<T> {
     return this.elements.keys();
-  }
-
-  entries(): IterableIterator<[T, T]> {
-    function* entryGenerator(
-      elements: Map<T, ReplicaVersion>,
-    ): IterableIterator<[T, T]> {
-      for (const key of elements.keys()) {
-        yield [key, key];
-      }
-    }
-    return entryGenerator(this.elements);
   }
 
   has(value: T) {
