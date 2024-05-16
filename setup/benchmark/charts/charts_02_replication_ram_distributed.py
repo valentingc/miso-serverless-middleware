@@ -2,12 +2,19 @@ import os
 import re
 from datetime import datetime
 
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib import rcParams
 
-rcParams['font.weight'] = 'bold'
+params = {'legend.fontsize': 'large',
+          'figure.figsize': (10, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+pylab.rcParams.update(params)
 # input files
 
 files = ["./data/02_replication/ram/distributedLoad/5N_V5.csv", "./data/02_replication/ram/distributedLoad/10N_V5.csv","./data/02_replication/ram/distributedLoad/20N_V5.csv", "./data/02_replication/ram/distributedLoad/30N_V5.csv"]
@@ -62,6 +69,7 @@ for i in range(len(dataframes)):
 
     ax.bar(get_pretty_name(columnNames[i]), totalData, label=get_pretty_name(columnNames[i]), hatch=hatches[i])
 ax.set_ylabel('Size in MB', fontweight='bold')
+ax.set_xlabel('Nodes',fontweight="bold")
 ax.set_ylim(bottom=0)
 ax.set_title('Maximum RAM Usage', fontweight='bold')
 ax.grid(axis='y')

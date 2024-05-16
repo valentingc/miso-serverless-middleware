@@ -1,12 +1,19 @@
 import os
 from datetime import datetime
 
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib import rcParams
 
-rcParams['font.weight'] = 'bold'
+params = {'legend.fontsize': 'large',
+          'figure.figsize': (10, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+pylab.rcParams.update(params)
+
 # input files
 files = ["./data/03_qualitative/linesOfCode.csv", "./data/03_qualitative/cognitiveComplexity.csv"]
 column_names = ["Lines of Code", "Cognitive Complexity"]
@@ -36,7 +43,7 @@ merged_dfs = pd.merge(dataframes[0], dataframes[1], on='Type')
 merged_dfs.set_index('Type', inplace=True)
 
 
-fig, ax = plt.subplots(1, 1, figsize=(6, 4))
+fig, ax = plt.subplots(1, 1, figsize=(10,5))
 bar_width = 0.35
 index = range(len(merged_dfs))
 

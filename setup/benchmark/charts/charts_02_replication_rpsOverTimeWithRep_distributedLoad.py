@@ -1,12 +1,20 @@
 import os
 from datetime import datetime
 
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib import rcParams
 
-rcParams['font.weight'] = 'bold'
+params = {'legend.fontsize': 'large',
+          'figure.figsize': (10, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+pylab.rcParams.update(params)
+#rcParams['font.weight'] = 'bold'
 # input files
 filesTime = ["./data/02_replication/rps/distributedLoad/5N_RPS.csv","./data/02_replication/rps/distributedLoad/10N_RPS.csv","./data/02_replication/rps/distributedLoad/20N_RPS.csv","./data/02_replication/rps/distributedLoad/30N_RPS.csv"]#, "./data/02_replication/rps/distributedLoad/10N_RPS.csv", "./data/02_replication/rps/distributedLoad/20N_RPS.csv", "./data/02_replication/rps/distributedLoad/30N_RPS.csv", "./data/02_replication/rps/distributedLoad/40N_RPS.csv",   "./data/02_replication/rps/distributedLoad/50N_RPS.csv", "./data/02_replication/rps/distributedLoad/50N_RPS_200ms.csv"
 filesRequests = ["./data/02_replication/rps/distributedLoad/5N_Requests.csv","./data/02_replication/rps/distributedLoad/10N_Requests.csv","./data/02_replication/rps/distributedLoad/20N_Requests.csv","./data/02_replication/rps/distributedLoad/30N_Requests.csv"]#, "./data/02_replication/repTimeCompleteBucket/10N_Requests.csv", "./data/02_replication/repTimeCompleteBucket/20N_Requests.csv", "./data/02_replication/repTimeCompleteBucket/30N_Requests.csv", "./data/02_replication/repTimeCompleteBucket/40N_Requests.csv",   "./data/02_replication/repTimeCompleteBucket/50N_Requests.csv", "./data/02_replication/repTimeCompleteBucket/50N_Requests_200ms.csv"]
@@ -90,7 +98,7 @@ def get_pretty_name(type_key, type):
     if type_key == '50N-200ms':
         return '50N (200ms)'
     else:
-        return str(type_key + " ("  + "5ms)")
+        return str(type_key + " ("  + type + ")" )
     
 def get_cluster_color(type_key):
     if type_key == '5N':
@@ -129,8 +137,8 @@ for i in range(len(filesTime)):
 fig, ax = plt.subplots(1, 1, figsize=(10, 5))
 for i in range(len(dataframes)):
     print(dataframes[i])
-    ax.plot(dataframes[i]["Requests"], dataframes[i]["TotalRequests"], label=get_pretty_name(columnNames[i], "Core"), color=get_cluster_color(columnNames[i]))
-    #ax.plot(dataframes[i]["Requests"], dataframes[i]["ReplicationRequests"], label=get_pretty_name(columnNames[i], "Replication"), linestyle='dashed',color=get_cluster_color(columnNames[i]))
+    ax.plot(dataframes[i]["Requests"], dataframes[i]["RPS"], label=get_pretty_name(columnNames[i], "Core"), color=get_cluster_color(columnNames[i]))
+    ax.plot(dataframes[i]["Requests"], dataframes[i]["ReplicationRequests"], label=get_pretty_name(columnNames[i], "Replication"), linestyle='dashed',color=get_cluster_color(columnNames[i]))
     
 
 ax.set_ylabel('RPS (total of all nodes)', fontweight='bold')
@@ -138,8 +146,8 @@ ax.set_xlabel('Requests in millions', fontweight='bold')
 ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
 ax.legend()
 ax.grid(axis='y')
-ax.set_title('RPS over Time (Core + Replication)', fontweight='bold')
-plt.tight_layout
+ax.set_title('RPS over Time (Core + Replication with 5ms interval)', fontweight='bold')
+plt.tight_layout()
 plt.savefig(os.path.join(figures_directory, f'rps_time_over_time_withRep_distributed.png'))
 plt.savefig(os.path.join(figures_directory, f'rps_time_over_time_withRep_distributed.pdf'))
 

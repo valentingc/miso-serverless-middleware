@@ -2,12 +2,19 @@ import os
 import re
 from datetime import datetime
 
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib import rcParams
 
-rcParams['font.weight'] = 'bold'
+params = {'legend.fontsize': 'large',
+          'figure.figsize': (10, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+pylab.rcParams.update(params)
 # input files
 files = ["./data/02_replication/totalRepData/distributedLoad/5N_totalRepData.csv", "./data/02_replication/totalRepData/distributedLoad/10N_totalRepData.csv", "./data/02_replication/totalRepData/distributedLoad/20N_totalRepData.csv", "./data/02_replication/totalRepData/distributedLoad/30N_totalRepData.csv"]
 columnNames = ["5N", "10N", "20N", "30N"]
