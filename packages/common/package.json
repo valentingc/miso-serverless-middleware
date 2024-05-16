@@ -3,6 +3,7 @@
   "version": "0.9.0",
   "description": "",
   "main": "dist/index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "clean": "rimraf ./dist/ ./src/grpc/client/* ./src/grpc/server/* tsconfig.tsbuildinfo",
@@ -17,11 +18,8 @@
     "build:proto": "echo 'Building proto files only works in a linux shell!' && npm run build:proto-client-loader && npm run build:proto-server-tsproto",
     "release": "npm version patch && npm publish"
   },
-  "author": "",
-  "license": "",
-  "publishConfig": {
-    "registry": "https://verdaccio.valentingc.dev"
-  },
+  "author": "MISO Authors",
+  "license": "Apache-2.0",
   "dependencies": {
     "@grpc/grpc-js": "^1.7.3",
     "@grpc/proto-loader": "^0.7.8",

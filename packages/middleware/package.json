@@ -18,8 +18,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "keywords": [],
-  "author": "",
-  "license": "",
+  "author": "MISO Authors",
+  "license": "Apache-2.0",
   "private": true,
   "dependencies": {
     "@grpc/grpc-js": "1.7.3",
@@ -94,9 +94,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  },
-  "publishConfig": {
-    "registry": "https://verdaccio.valentingc.dev"
   },
   "type": "module"
 }

@@ -9,15 +9,7 @@
     "build-all": "npm run build --workspaces --if-present",
     "install-all": "npm install --workspaces --if-present"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/valentingc/master-thesis.git"
-  },
-  "author": "Valentin Goronjic",
-  "bugs": {
-    "url": "https://github.com/valentingc/master-thesis/issues"
-  },
-  "homepage": "https://github.com/valentingc/master-thesis#readme",
+  "author": "MISO Authors",
   "workspaces": [
     "packages/crdt",
     "packages/middleware",

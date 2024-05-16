@@ -3,18 +3,16 @@
   "version": "0.2.0",
   "description": "",
   "main": "dist/index.js",
+  "private": true,
   "scripts": {
     "test": "jest",
     "build": "tsc"
   },
-  "author": "",
-  "license": "",
+  "author": "MISO Authors",
+  "license": "Apache-2.0",
   "dependencies": {
     "@types/uuid": "^9.0.1",
     "uuid": "^9.0.0"
-  },
-  "publishConfig": {
-    "registry": "https://verdaccio.valentingc.dev"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",

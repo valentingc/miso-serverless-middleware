@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "benchmark.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "MISO Authors",
+  "license": "Apache-2.0",
   "dependencies": {
     "@types/autocannon": "^7.12.0",
     "autocannon": "^7.12.0",

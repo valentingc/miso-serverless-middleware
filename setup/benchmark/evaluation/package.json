@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "throughput.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "MISO Authors",
+  "license": "Apache-2.0",
   "dependencies": {
     "@grpc/grpc-js": "^1.9.13",
     "@grpc/proto-loader": "^0.7.10",
