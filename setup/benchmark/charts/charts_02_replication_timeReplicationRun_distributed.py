@@ -100,7 +100,7 @@ for i in range(len(dataframes)):
     ax.plot(dataframes[i]["Requests"], dataframes[i]["Duration"], label=get_pretty_name(columnNames[i]))
 ax.set_ylabel('Time in ms', fontweight='bold')
 ax.set_xlabel('Requests in millions', fontweight='bold')
-ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
+ax.set_ylim(bottom=0)
 ax.legend(loc="center right")
 ax.grid(axis='y')
 ax.set_title('Duration per replication run over time', fontweight='bold')

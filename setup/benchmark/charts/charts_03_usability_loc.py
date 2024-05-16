@@ -29,7 +29,6 @@ def read_and_preprocess(file_name):
 
 
 dataframes = []
-# loop over files and read
 for i in range(len(files)):
     print("Currently processing", files[i], "with column name")
     df = read_and_preprocess(files[i])
@@ -53,7 +52,7 @@ ax.set_xticks([i + bar_width/2 for i in index])
 ax.set_xticklabels(merged_dfs.index)
 ax.legend()
 ax.set_ylabel('Count', fontweight='bold')
-ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
+ax.set_ylim(bottom=0)
 ax.set_title('Lines of Code and Cognitive Complexity per Type', fontweight='bold')
 ax.grid(axis='y')
 plt.tight_layout()

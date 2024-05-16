@@ -97,7 +97,7 @@ for i in range(len(dataframes)):
     ax.bar(get_pretty_name(columnNames[i]), dataframes[i][columnNames[i]].mean(), label="Core", hatch=hatches[0], color='tab:blue')
     ax.bar(get_pretty_name(columnNames[i]), dataframes[i]['requests_replication'].mean(), bottom=dataframes[i][columnNames[i]].mean(), label="Replication", hatch=hatches[1], color='tab:orange')
 ax.set_ylabel('Requests per second', fontweight='bold')
-ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
+ax.set_ylim(bottom=0)
 ax.set_xlabel("Nodes", fontweight='bold')
 ax.set_title('Average Total RPS (Core + Replication)', fontweight='bold')
 ax.grid(axis='y')

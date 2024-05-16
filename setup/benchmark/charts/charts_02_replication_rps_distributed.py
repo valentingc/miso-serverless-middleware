@@ -75,7 +75,6 @@ def get_pretty_name(type_key):
     else:
         return str(type_key + " (5ms)")
     
-# Print vertical bar chart for each DF, the showing average val
 fig, ax = plt.subplots(1, 1, figsize=(10, 5))
 for i in range(len(dataframes)):
     mean = dataframes[i][columnNames[i]].mean()
@@ -85,7 +84,7 @@ for i in range(len(dataframes)):
     print("Nodes: " , columnNames[i], "Mean", mean, "99th percentile", percentile_99, "Median", median)
     ax.bar(get_pretty_name(columnNames[i]), mean, label=get_pretty_name(columnNames[i]), hatch=hatches[i])
 ax.set_ylabel('Requests per second', fontweight='bold')
-ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
+ax.set_ylim(bottom=0)
 ax.set_xlabel("Nodes", fontweight='bold')
 ax.set_title('Average RPS', fontweight='bold')
 ax.grid(axis='y')

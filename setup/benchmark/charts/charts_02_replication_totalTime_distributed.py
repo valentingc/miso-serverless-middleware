@@ -88,7 +88,7 @@ for i in range(len(dataframes)):
     ax.bar(get_pretty_name(columnNames[i]), duration.total_seconds() / 60, label=get_pretty_name(columnNames[i]), hatch=hatches[i])
 ax.set_ylabel('Time (minutes)', fontweight='bold')
 ax.set_xlabel('Nodes', fontweight='bold')
-ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
+ax.set_ylim(bottom=0)
 ax.set_title('Duration for 5 million requests', fontweight='bold')
 ax.grid(axis='y')
 plt.tight_layout()

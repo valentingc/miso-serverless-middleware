@@ -143,7 +143,7 @@ for i in range(len(dataframes)):
 
 ax.set_ylabel('RPS (total of all nodes)', fontweight='bold')
 ax.set_xlabel('Requests in millions', fontweight='bold')
-ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
+ax.set_ylim(bottom=0)
 ax.legend()
 ax.grid(axis='y')
 ax.set_title('RPS over Time (Core + Replication with 5ms interval)', fontweight='bold')

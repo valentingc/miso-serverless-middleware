@@ -52,7 +52,6 @@ with open(output_file, 'w') as f:
     f.write("Nodes,Mean,Std,Min,Max,25%,50%,75%,95%,99%,\n")
 
 dataframes = []
-# loop over files and read
 for i in range(len(files)):
     print("Currently processing", files[i], "with column name", columnNames[i])
     df = read_and_preprocess(files[i], columnNames[i])
@@ -60,28 +59,21 @@ for i in range(len(files)):
     print("95th percentile", df[columnNames[i]].quantile(0.95))
     print("99th percentile", df[columnNames[i]].quantile(0.99))
 
-    # add metrics to output file
     with open(output_file, 'a') as f:
         f.write(columnNames[i] + "," + str(df[columnNames[i]].mean()) + "," + str(df[columnNames[i]].std()) + "," + str(df[columnNames[i]].min()) + "," + str(df[columnNames[i]].max()) + "," + str(df[columnNames[i]].quantile(0.25)) + "," + str(df[columnNames[i]].quantile(0.50)) + "," + str(df[columnNames[i]].quantile(0.75)) + ","+ str(df[columnNames[i]].quantile(0.95)) + ","+ str(df[columnNames[i]].quantile(0.99)) )
         f.write("\n")
     dataframes.append(df)
 
-# Print vertical bar chart for each DF, the showing average val (maybe 99th percentile in future)
 fig, ax = plt.subplots(1, 1, figsize=(10, 5))
 for i in range(len(dataframes)):
     mean = dataframes[i][columnNames[i]].mean()
     percentile_99 = dataframes[i][columnNames[i]].quantile(0.99)
     median = dataframes[i][columnNames[i]].median()
 
-    # lower_err = mean - median
-    # upper_err = percentile_99 - mean
-    # y_err = [[lower_err], [upper_err]]
-    # y_err = [[median - dataframes[i][columnNames[i]].quantile(0.50)], [percentile_99 - median]]
-
     print("Nodes: " , columnNames[i], "Mean", mean, "99th percentile", percentile_99, "Median", median)
     ax.bar(get_pretty_name(columnNames[i]), mean, label=get_pretty_name(columnNames[i]), hatch=hatches[i])
 ax.set_ylabel('Time in ms', fontweight='bold')
-ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
+ax.set_ylim(bottom=0)
 ax.set_xlabel("Nodes", fontweight='bold')
 ax.set_title('Average time to replicate after 5 million requests', fontweight='bold')
 ax.grid(axis='y')
