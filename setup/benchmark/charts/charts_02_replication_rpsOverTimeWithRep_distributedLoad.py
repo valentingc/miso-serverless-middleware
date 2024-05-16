@@ -138,7 +138,7 @@ ax.set_xlabel('Requests in millions', fontweight='bold')
 ax.set_ylim(bottom=0)  # Limit y-axis to minimum value of 0
 ax.legend()
 ax.grid(axis='y')
-ax.set_title('RPS over time (Core + Replication)', fontweight='bold')
+ax.set_title('RPS over Time (Core + Replication)', fontweight='bold')
 plt.tight_layout
 plt.savefig(os.path.join(figures_directory, f'rps_time_over_time_withRep_distributed.png'))
 plt.savefig(os.path.join(figures_directory, f'rps_time_over_time_withRep_distributed.pdf'))
