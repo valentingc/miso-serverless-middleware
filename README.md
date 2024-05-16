@@ -31,6 +31,8 @@ This file needs to be present in the root of the repository, in every folder wit
 
 Install dependencie in all packages with `npm install`.
 
+To build the solution locally, please obtain your own copy of the [ghz](https://github.com/bojand/ghz/releases) benchmark tool. Download the `ghz-linux-x86_64.tar.gz` release, unzip the archive, and add the `ghz` binary to `./setup/benchmark/evaluation`. This is because our Dockerfile copies the binary so that we can use the tool in the pod. We did not modify the tool and do not distribute their binary in this repository. All details including license and their copyright notice can be found in their [GitHub Repository](https://github.com/bojand/ghz).
+
 
 ## Deploying
 MISO can be installed standalone or integrated with OpenFaaS. Script does not work on Windows, you need a Unix-based system like Ubuntu!
@@ -59,7 +61,7 @@ faas-cli deploy
 
 
 # Evaluation
-All obtained data is within `./setup/benchmark/charts/data`.
+All obtained data and charts of the thesis are within `./setup/benchmark/charts/data`.
 
 Port-forward to the pod thas is created in the namespace `evaluation` with a name of `evaluation-miso-evaluation-xxxx-xxxx` to port 3000.
 
@@ -98,7 +100,7 @@ kubectl cp evaluation/evaluation-miso-evaluation-595bbfbc45-2sffr:/data/json/ben
 ```
 curl -X POST http://localhost:3000/throughput-ghz/1000/<REPETITIONS>/<CONCURRENCY>/<TEST_TYPE>/<NR_OF_NODES>/<IP_AND_PORT>
 ```
-Explanation of paraemters:
+Explanation of parameters:
 
 
 `1000` is currently unused.
@@ -114,8 +116,19 @@ requests over all nodes, `single` only calls a single node
 
 `<IP_AND_PORT>` is the IP and port of a node if using `single` test type, e.g. `172.18.0.2:30001`
 
+You can also port-forward to the Grafana pod that is created to see metrics.
+We provide a custom dashboard that can imported to Grafana to see MISO metrics: [./setup/benchmark/grafana/Grafana_MISO%20Metrics_Dashboard.json](./setup/benchmark/grafana/Grafana_MISO%20Metrics_Dashboard.json)
+We suggest you also import the [NodeJS Application Dashboard](./setup/benchmark/grafana/Grafana_MISO%20Metrics_Dashboard.json) to see memory consumption on the node-level.
+
 
 ## Qualitative Evaluation
+### Integration of MISO with OpenFaaS
+We include a version of [faas-netes](https://github.com/openfaas/faas-netes) in this repository to show the integration more easily.
+
+The changes we made to faas-netes, the provider of OpenFaaS for Kubernetes, are described here: [serverless/openfaas/faas-netes/CHANGES.md](./serverless/openfaas/faas-netes/CHANGES.md). We include the
+
+
+### Cognitive Complexity 
 Cognitive complexity is calculated with the package [cognitive-complexity-ts](https://github.com/Deskbot/Cognitive-Complexity-TS).
 
 Install the dependency:
